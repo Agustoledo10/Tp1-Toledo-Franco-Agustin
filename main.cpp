@@ -19,14 +19,23 @@ void mostrarmat(int m[][5], int dfil)
         }
 
 }
-void transpuesta (int matriz[][5], int dfila )
+
+void transpuesta (int matriz[][5])
 {
+    int aux;
     const int dcol = 5;
-    for(int i=0; i<dfila; i++){
-        for (int j=0; j<dcol; j++){
-        cout << matriz [j][i] << '\t';        
+    const int dfil = 5;
+    for (int i = 0; i < dfil; i++)
+    {
+        for(int j= i; j < dcol; j++)
+        {
+            if (j!=i)
+            {
+                aux = matriz[i][j];
+                matriz[i][j] = matriz[j][i];
+                matriz[j][i] = aux;
+            } 
         }
-        cout << endl;
     }
 }
 void revertir ( int vec[], int dim)
@@ -80,7 +89,8 @@ int main()
 	mostrarmat(matriz, dim5);
 
     cout << "Transpuesta" << endl;
-	transpuesta(matriz, dim5);
+	transpuesta(matriz);
+    mostrarmat (matriz, dim5);
 
     
     return 0;
